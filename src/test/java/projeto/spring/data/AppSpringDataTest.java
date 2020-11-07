@@ -63,4 +63,17 @@ public class AppSpringDataTest {
 		
 	}
 	
+	
+	@Test
+	public void testeUpdate() {
+		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(2L);
+		
+		UsuarioSpringData data = usuarioSpringData.get();
+	
+		data.setNome("NomeModificado");
+		
+		interfaceSpringDataUser.save(data);
+		
+	}
+	
 }
