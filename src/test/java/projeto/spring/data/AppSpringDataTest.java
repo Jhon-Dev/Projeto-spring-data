@@ -1,5 +1,6 @@
 package projeto.spring.data;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class AppSpringDataTest {
 		usuarioSpringData.setSenha("123");
 		usuarioSpringData.setNome("Nuss");
 		usuarioSpringData.setIdade("23");
-		usuarioSpringData.setEmail("jhonatan.nuss@gmail.com");
+		usuarioSpringData.setEmail("jhonatan@gmail.com");
 		
 		interfaceSpringDataUser.save(usuarioSpringData);
 		
@@ -91,6 +92,23 @@ public class AppSpringDataTest {
 		
 		interfaceSpringDataUser.deleteAll();
 		
+	}
+	@Test
+	public void testeConsultaNome() {
+		
+		List<UsuarioSpringData> list = interfaceSpringDataUser.buscaPorNome("Nuss");
+		
+		for (UsuarioSpringData usuarioSpringData : list) {
+			System.out.println(usuarioSpringData.getId());
+			System.out.println(usuarioSpringData.getLogin());
+			System.out.println(usuarioSpringData.getSenha());
+			System.out.println(usuarioSpringData.getNome());
+			System.out.println(usuarioSpringData.getIdade());
+			System.out.println(usuarioSpringData.getEmail());
+			System.out.println("------------------------------------------------------------");
+			
+		}
+
 	}
 	
 }
