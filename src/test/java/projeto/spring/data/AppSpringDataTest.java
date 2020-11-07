@@ -10,6 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import projeto.spring.data.dao.InterfaceSpringDataUser;
+import projeto.spring.data.dao.InterfaceTelefone;
+import projeto.spring.data.model.Telefone;
 import projeto.spring.data.model.UsuarioSpringData;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,6 +20,10 @@ public class AppSpringDataTest {
 
 	@Autowired
 	InterfaceSpringDataUser interfaceSpringDataUser;
+	
+	@Autowired
+	private InterfaceTelefone interfaceTelefone;
+	
 	
 	@Test
 	public void testeInsert() {	
@@ -36,7 +42,7 @@ public class AppSpringDataTest {
 	@Test
 	public void testeConsulta() {	
 
-		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(2L);
+		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(14L);
 		
 		System.out.println(usuarioSpringData.get().getNome());
 		System.out.println(usuarioSpringData.get().getIdade());
@@ -44,7 +50,15 @@ public class AppSpringDataTest {
 		System.out.println(usuarioSpringData.get().getSenha());
 		System.out.println(usuarioSpringData.get().getEmail());
 		System.out.println(usuarioSpringData.get().getId());		
-		
+
+		for(Telefone telefone : usuarioSpringData.get().getTelefones()) {
+			
+			System.out.println(telefone.getTipo());
+			System.out.println(telefone.getNumero());
+			System.out.println(telefone.getId());
+			System.out.println(telefone.getUsuarioSpringData().getNome());
+			System.out.println("-------------------------------------------------------------");
+		}
 	}
 	
 	@Test
@@ -138,6 +152,20 @@ public class AppSpringDataTest {
 	public void testeUpdateEmailPorNome() {
 		
 		interfaceSpringDataUser.updateEmailPorNome("teste@gmail.com", "nuss");
+	}
+	
+	@Test
+	public void testeInsertTelefone() {
+		
+		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(15L);
+		
+		Telefone telefone = new Telefone();
+		telefone.setTipo("Casa");
+		telefone.setNumero("98849885597");
+		telefone.setUsuarioSpringData(usuarioSpringData.get());
+		
+		interfaceTelefone.save(telefone);
+		
 	}
 	
 }

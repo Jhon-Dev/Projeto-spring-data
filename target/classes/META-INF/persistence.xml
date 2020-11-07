@@ -6,6 +6,8 @@
 	
 	<persistence-unit name="projeto-spring-data">	
 		<class>projeto.spring.data.model.UsuarioSpringData</class>
+		<class>projeto.spring.data.model.Telefone</class>
+		
 		<!--  <class>projeto.spring.data.model.Telefone</class>  -->
 		
 		
