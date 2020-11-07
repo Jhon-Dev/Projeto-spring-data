@@ -24,7 +24,7 @@ public class AppSpringDataTest {
 		UsuarioSpringData usuarioSpringData = new UsuarioSpringData();
 		usuarioSpringData.setLogin("admin");
 		usuarioSpringData.setSenha("123");
-		usuarioSpringData.setNome("hgtt");
+		usuarioSpringData.setNome("nuss");
 		usuarioSpringData.setIdade("23");
 		usuarioSpringData.setEmail("jhonatan@gmail.com");
 		
@@ -132,6 +132,12 @@ public class AppSpringDataTest {
 	public void testeDeletePorNome() {
 		interfaceSpringDataUser.deletePorNome("Nuss");
 		
+	}
+	
+	@Test
+	public void testeUpdateEmailPorNome() {
+		
+		interfaceSpringDataUser.updateEmailPorNome("teste@gmail.com", "nuss");
 	}
 	
 }
